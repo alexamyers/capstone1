@@ -22,5 +22,25 @@ module.exports = {
         })
         .catch((err) => console.log(err));
     },
+
+    getMeadowRoutes: (req, res) => {
+        sequelize.query(`SELECT * FROM routes
+        WHERE subarea_id = 3;`)
+        .then((dbResult) => {
+            console.log(dbResult);
+            res.status(200).send(dbResult[0]);
+        })
+        .catch((err) => console.log(err));
+    },
+
+    getSummersvilleRoutes: (req, res) => {
+        sequelize.query(`SELECT * FROM routes
+        WHERE subarea_id = 2;`)
+        .then((dbResult) => {
+            console.log(dbResult);
+            res.status(200).send(dbResult[0]);
+        })
+        .catch((err) => console.log(err));
+    },
 }
 

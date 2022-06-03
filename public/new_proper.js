@@ -9,15 +9,6 @@ const getRoutes = () => {
 }
 
 
-// const getRouteNames =() => {
-//     axios.get(baseURL).then(res => {
-//         res.data.forEach(route => {
-//             const name = `<div>${route.route_name}</div>`
-//             routesContainer.innerHTML += routeElem
-//         });
-//     })
-//     .catch(err => console.log(err))
-// }
 
 const getRouteNames = () => {
     axios.get(baseURL).then((res) => {
@@ -30,7 +21,7 @@ const getRouteNames = () => {
         <div class="route_item">${routes.route_name}</div> 
         <div class="route_item">${routes.difficulty}</div> 
         <div class="route_item">${routes.style}</div> 
-        <button id="add_route">add</button>
+        <button id="add_route">+</button>
         </section>`);
         
         const nameDiv = document.getElementById('route_name');
