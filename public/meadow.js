@@ -1,14 +1,10 @@
-const baseURL = `http://localhost:4000/api/meadowroutes`
+const baseURL = `http://localhost:4001/api/meadowroutes`
 
 let routesContainer = document.getElementById('routes_container');
-
-
 
 const getRoutes = () => {
     axios.get(baseURL).then((res) => (routesContainer.innerText = JSON.stringify(res.data, null, 1))).catch(err => console.log(err))
 }
-
-
 
 const getRouteNames = () => {
     axios.get(baseURL).then((res) => {
@@ -21,7 +17,7 @@ const getRouteNames = () => {
         <div class="route_item">${routes.route_name}</div> 
         <div class="route_item">${routes.difficulty}</div> 
         <div class="route_item">${routes.style}</div> 
-        <button id="add_route">+</button>
+        <button onclick="sendToTicklist(${routes.route_id})" id="add_route">+</button>
         </section>`);
         
         const nameDiv = document.getElementById('route_name');
@@ -29,5 +25,10 @@ const getRouteNames = () => {
         nameDiv.innerHTML = routeName.join("")
     });
 };
+
+    const sendToTicklist = (id) => {
+        axios.post('http://localhost:4001/api/ticklist', {route_id: id})
+        .then(res => console.log(res.data))
+    };
 
 getRouteNames();

@@ -14,11 +14,7 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 module.exports = {
     seed: (req, res) => {
         sequelize.query(`
-        drop table if exists users;
-        drop table if exists climbing_areas;
-        drop table if exists subareas;
-        drop table if exists routes;
-        drop table if exists ticklists;
+        drop table if exists users, climbing_areas, subareas, routes, ticklists CASCADE;
 
         create table users (
             user_id serial primary key,
@@ -55,15 +51,13 @@ module.exports = {
 
         create table ticklists (
             ticklist_id serial primary key,
-            user_id integer references users(user_id),
-            route_id integer references routes(route_id),
-            score integer
+            route_id integer references routes(route_id)
         );
 
-        insert into users (username, email, password, height, weight, ape_index, location)
-        values ('alexmyers', 'alex@gmail.com', 'asdf', '70', '163', '1', 'Charlotte, NC'),
-        ('danford', 'dan@yahoo.com', 'sdfg', '64', '144', '3', 'Chattanooga, TN'),
-        ('bigmike', 'mike@aol.com', 'dfgh', '74', '185', '-1', 'Roanoke, VA');
+        insert into users (user_id, username, email, password, height, weight, ape_index, location)
+        values (1, 'alexmyers', 'alex@gmail.com', 'asdf', '70', '163', '1', 'Charlotte, NC'),
+        (2, 'danford', 'dan@yahoo.com', 'sdfg', '64', '144', '3', 'Chattanooga, TN'),
+        (3, 'bigmike', 'mike@aol.com', 'dfgh', '74', '185', '-1', 'Roanoke, VA');
 
         insert into climbing_areas (area_id, name, info)
         values (1, 'New River Proper', 'FILL IN DESC'), 
@@ -96,7 +90,8 @@ module.exports = {
         (18, 3, 'Greatest Show on Earth', '7c+', 'traditional'),
         (19, 3, 'Mango Tango', '8b+', 'sport');
 
-        
+        insert into ticklists (ticklist_id, route_id)
+        values (1, 3);
 
         `)
     }
