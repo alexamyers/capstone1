@@ -64,8 +64,13 @@ module.exports = {
     },
 
 
-    deleteHouse: (req, res) => {
-    const removedRoute = +req.params.id
-}
+    deleteRoute: (req, res) => {
+        const {route_id} = req.params
+        
+        sequelize.query(`DELETE FROM ticklists
+        WHERE route_id = ${route_id};`)
+        .then((dbResult) => res.status(200).send(dbResult[0]))
+        .catch((err) => console.log(err));
+    },
 
 }

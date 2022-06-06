@@ -7,7 +7,7 @@ const cors = require('cors');
 const {SERVER_PORT} = process.env
 
 const {seed} = require('./seed.js')
-const { getRoutes, getMeadowRoutes, getSummersvilleRoutes, updateTicklist, getTicklist, /*deleteRoute*/ } = require('./controller.js')
+const { getRoutes, getMeadowRoutes, getSummersvilleRoutes, updateTicklist, getTicklist, deleteRoute } = require('./controller.js')
 const app = express()
 
 app.use(express.json());
@@ -19,7 +19,7 @@ app.get('/api/meadowroutes', getMeadowRoutes);
 app.get('/api/summersvilleroutes', getSummersvilleRoutes);
 app.post('/api/ticklist', updateTicklist);
 app.get('/api/ticklist', getTicklist);
-// app.delete('/api/ticklist/:route_id', deleteRoute);
+app.delete('/api/ticklist/:route_id', deleteRoute);
 
 app.listen(SERVER_PORT, () => console.log(`all good on port ${SERVER_PORT}`));
 

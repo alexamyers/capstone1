@@ -26,9 +26,9 @@ const getTicklist = () => {
     });
 };
 
-// const deleteRoute = (route_id) => {
-//     axios.delete(baseURL + `/${route_id}`).then(alert(`${route_name} has been removed from your ticklist`))
-
-// } 
+const deleteRoute = (route_id) => {
+    axios.delete(baseURL + `/${route_id}`).then(alert(`route has been removed from your ticklist`));
+    getTicklist();
+} 
 
 getTicklist();
