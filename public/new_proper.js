@@ -29,7 +29,7 @@ const getRouteNames = () => {
 const sendToTicklist = (id) => {
     axios.post('http://localhost:4001/api/ticklist', {route_id: id})
     .then(res => console.log(res.data))
-    alert(`route has been added to your ticklist`);
+    alert(`Route has been added to your ticklist`);
 }
 
 getRouteNames();

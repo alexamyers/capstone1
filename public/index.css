@@ -93,31 +93,6 @@ a {
 
 }
 
-/* ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-li {
-  display: flex;
-  float: left;
-  /* background-color: darkgray; */
-/* } */
-
-/* a { */
-  /* display: block;
-  padding: 20px;
-  background-color: darkgray; */
-/* } */
-
- /* h1 {
-     font-family: permanent marker, sans-serif;
-     letter-spacing: .1em;
-     size: 36px;
- } 
-  */
-
   h1 {
     font-family: permanent marker, sans-serif;
     color: #34495e;
@@ -186,6 +161,10 @@ li {
   color: #718daa;
  }
 
+ .allTheRoutes:hover {
+  color: #718daa;
+}
+
  #route_titles {
   display: grid;
   grid-template-columns: .25fr .25fr .25fr .25fr;
@@ -199,3 +178,11 @@ li {
   border-radius: 100px;
 }
 
+#remove_route {
+  border-radius: 100px;
+}
+
+.allTheRoutes:hover {
+  color: #718daa;
+  font-size: 18px;
+}
